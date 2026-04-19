@@ -1,7 +1,7 @@
-package com.banque.api.repository; // 1. Toujours en premier
+package com.example.api_bancaire.repository; // 1. Toujours en premier
 
 // 2. Les imports ensuite
-import com.banque.api.model.Compte;
+import com.example.api_bancaire.model.Compte;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

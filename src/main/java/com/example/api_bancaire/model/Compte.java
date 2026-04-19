@@ -1,4 +1,4 @@
-package com.banque.api.model;
+package com.example.api_bancaire.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

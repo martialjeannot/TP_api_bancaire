@@ -1,10 +1,10 @@
-package com.banque.api.controller;
+package com.example.api_bancaire.controller;
 
-import com.banque.api.model.Compte;
-import com.banque.api.repository.CompteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+// GARDER UNIQUEMENT CES DEUX-LÀ
+import com.example.api_bancaire.model.Compte;
+import com.example.api_bancaire.repository.CompteRepository;
+import org.springframework.beans.factory.annotation.Autowired; // Ajoute celle-ci si @Autowired est rouge
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -14,20 +14,17 @@ public class CompteController {
     @Autowired
     private CompteRepository repository;
 
-    // Lister les comptes
     @GetMapping
     public List<Compte> getTousLesComptes() {
         return repository.findAll();
     }
 
-    // Créer un compte
     @PostMapping("/creer")
     public Compte creerCompte(@RequestBody Compte nouveauCompte) {
         nouveauCompte.setNumeroCompte("CB-" + (int)(Math.random() * 9000));
         return repository.save(nouveauCompte);
     }
 
-    // Transaction : Dépôt ou Retrait
     @PostMapping("/transaction")
     public String faireTransaction(@RequestParam String numero,
                                    @RequestParam double montant,
