@@ -1,14 +1,17 @@
-package com.example.api_bancaire.repository; // 1. Toujours en premier
+package com.example.api_bancaire.repository;
 
-// 2. Les imports ensuite
 import com.example.api_bancaire.model.Compte;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import java.util.List;
 
-// 3. La déclaration de l'interface enfin
 @Repository
 public interface CompteRepository extends JpaRepository<Compte, Long> {
 
-    // Cette méthode magique génère la requête SQL toute seule
+    // Recherche exacte par numéro de compte
     Compte findByNumeroCompte(String numeroCompte);
+
+    // NOUVEAU : Recherche par nom (insensible à la casse et recherche partielle)
+    // Utile pour la fonctionnalité "Recherche Avancée et Filtrage"
+    List<Compte> findByNomClientContainingIgnoreCase(String nomClient);
 }
